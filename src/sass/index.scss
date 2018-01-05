@@ -1,6 +1,11 @@
 @charset "UTF-8";
 .main {
 	width: 1263px;
-	height:400px;
-	border: 1px solid red;
+	height:900px;
+	#carousel-example-generic{
+		float: right;
+		width: 980px;
+		height: 457px;
+		margin-right: 20px;
+	}
 }

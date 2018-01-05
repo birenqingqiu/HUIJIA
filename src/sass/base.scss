@@ -31,7 +31,7 @@ $ftlih :46px;
 	margin:0 auto;
 	.header-box{
 		width: 1263px;
-		height: 206px;
+		height: 205px;
 		.header-top{
 			background: #f1f1f1;
 			height: 60px;
@@ -276,6 +276,7 @@ $ftlih :46px;
 			height: 45px;
 			border-bottom:2px solid #ae7e4d;
 			.commodity{
+				margin-left: 30px;
 				position: relative;
 				float: left;
 				display: flex;
@@ -424,6 +425,9 @@ $ftlih :46px;
 	height: 15px;
 	display: flex;
 	justify-content: center;
+	a{
+		margin:0 10px; 
+	}
 }
 .footer-box .footer-pic1{
 	margin: 0 auto;
