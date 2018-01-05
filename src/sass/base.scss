@@ -31,7 +31,7 @@ $ftlih :46px;
 	margin:0 auto;
 	.header-box{
 		width: 1263px;
-		height: 207px;
+		height: 206px;
 		.header-top{
 			background: #f1f1f1;
 			height: 60px;
@@ -210,12 +210,13 @@ $ftlih :46px;
 		.header-bottom{
 			height: 100px;
 			.logo{
+				height: 100px;
 				float: left;
 				margin-left: 30px;
 				a{
 					display: block;
 					width: 220px;
-					height: 100px;
+					height: 70px;
 					background: url(/images/header/logo.png) no-repeat;
 					span{
 						display: none;
@@ -274,6 +275,94 @@ $ftlih :46px;
 		.header-link{
 			height: 45px;
 			border-bottom:2px solid #ae7e4d;
+			.commodity{
+				position: relative;
+				float: left;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				text-align: center;
+				width: 210px;
+				height: 45px;
+				background: #ae7e4d;
+				h4{
+					float: left;
+					color: #fff;
+				}
+				i{
+					float: right;
+					font-size: 23px;
+					color: #fff;
+				}
+				.phone{
+					position: absolute;
+					top: 45px;
+					left: 0px;
+					width: 210px;
+					height: 466px;
+					background: #ae7e4d;
+					li:nth-child(1){
+						color: #fff;
+						width: 210px;
+						height: 65px;
+						p:nth-child(1){
+							background: url(/images/header/phone.png) no-repeat;
+						}
+						i{
+							font-size: 12px;
+							color: #fff;
+						}
+					}
+					li:nth-child(1):hover{
+						color: #ae7e4d;
+						background: #fff;
+						i{
+							color: #ae7e4d;
+						}
+						p:nth-child(1){
+							background: url(/images/header/phone-1.png) no-repeat;
+						}
+					}
+				}
+			}
+			.h-link{
+				margin-left: 15px;
+				float: left;
+				width: 310px;
+				height: 45px;
+				line-height: 45px;
+				li{
+					float: left;
+					margin-right: 20px;
+					a{
+						text-decoration: none;
+						font-size: 18px;
+						color: #333333;
+					}
+					a:hover{
+						color: #ae7e4d;
+					}
+				}
+				li:nth-child(1) a{
+					color: #ae7e4d;
+				}
+			}
+			.xinyong{
+				float: right;
+				width: 160px;
+				height: 32px;
+				line-height: 32px;
+				margin-right: 20px; 
+				border: 1px solid;
+				border-top-left-radius: 20px; 
+				border-bottom-left-radius: 20px;
+				border-top-right-radius: 20px; 
+				border-bottom-right-radius: 20px;
+				text-align: center;
+				background: #ff5500;
+				color: #fff;
+				font-size: 16px;
+			}
 		}
 	}
 }
