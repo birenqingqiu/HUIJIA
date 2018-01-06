@@ -56,26 +56,26 @@
 					<div class="discounts-box">
 						<img src="{{product.img}}" class="img">
 						<div class="title">{{product.title}}</div>
-						<div class="price">{{product.price}}</div>
-						<div class="add">加入购物车</div>
+						<div class="price"><span>特价：￥</span>{{product.price}} <span>元</span></div>
+						<div class="add center-block" ><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</div>
 					</div>
 					{{/each}}
 				</script>
 			</div>
 
-			<!-- <h4>联想专区</h4>
+			<h4>联想专区</h4>
 			<div class="lenovo">
 				<script type="text/html" id="list_template_lenovo">
 					{{each lenovos as lenovo}}
 					<div class="lenovo-box">
 						<img src="{{lenovo.img}}" class="img">
 						<div class="title">{{lenovo.title}}</div>
-						<div class="price">{{lenovo.price}}</div>
-						<div class="add">加入购物车</div>
+						<div class="price"><span>价格：￥</span>{{lenovo.price}} <span>元</span></div>
+						<div class="add center-block"><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</div>
 					</div>
 					{{/each}}
 				</script>
-			</div> -->
+			</div>
 		</div>
 	</div>
 	
@@ -84,10 +84,11 @@
 		
 	</div>
 	
+
 	<script type="text/javascript" src="lib/jquery/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
 	
-	<script type="text/javascript" src="lib/arttemplate/template.js"></script>
-	<script src="lib/requirejs/require.js" data-main="js/list"></script>
+	
+	<script src="/lib/requirejs/require.js" data-main="/js/list"></script>
 </body>
 </html>
