@@ -7,8 +7,6 @@ require(["config"], function(){
 			// 渲染数据
 			var html = template("list_template", renderData);
 
-			console.log(html)
-
 			$(".discounts").html(html);
 
 			var renderData_lx = {lenovos : data.res_body.lenovo};
