@@ -1,11 +1,35 @@
 @charset "UTF-8";
 .main {
 	width: 1263px;
-	height:900px;
-	#carousel-example-generic{
+	min-height:957px;
+	.lunbotu{
 		float: right;
 		width: 980px;
 		height: 457px;
 		margin-right: 20px;
+		#carousel-example-generic{
+			float: right;
+			width: 980px;
+			height: 457px;
+		}
+	}
+	.clear{
+		clear: both;
+	}
+	.list{
+		width: 1263px;
+		min-height: 800px;
+		border: 1px solid red;
+		.discounts{
+			height: 730px;
+			border: 1px solid;
+			.discounts-box{
+				margin:6px; 
+				float: left;
+				width: 300px;
+				height: 350px;
+				border: 1px solid;
+			}
+		}
 	}
 }
