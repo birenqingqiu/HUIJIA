@@ -6,13 +6,17 @@ require.config({
 		"zoom" : "lib/jquery_plugins/jquery.elevateZoom-3.0.8.min",
 		"fly" : "lib/jquery_plugins/jquery.fly.min",
 		"template" : "lib/arttemplate/template",
-		"load" : "js/loadHeaderFooter"
+		"load" : "js/loadHeaderFooter",
+		"bootstrap" : "lib/bootstrap/js/bootstrap.min"
 	},
 	shim : {//由于 zoom ， fly ，jquer标准不支持，需自己定义配置依赖
 		"zoom" : {
 			deps : ["jquery"]
 		},
 		"fly" : {
+			deps : ["jquery"]
+		},
+		"bootstrap" : {
 			deps : ["jquery"]
 		}
 	}

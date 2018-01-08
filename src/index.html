@@ -54,9 +54,10 @@
 				<script type="text/html" id="list_template">
 					{{each products as product}}
 					<div class="discounts-box">
+						<div class="id" style="display:none">{{product.id}}</div>
 						<img src="{{product.img}}" class="img">
 						<div class="title">{{product.title}}</div>
-						<div class="price"><span>特价：￥</span>{{product.price}} <span>元</span></div>
+						<div class="price">{{product.price}}</div>
 						<div class="add center-block" ><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</div>
 					</div>
 					{{/each}}
@@ -68,9 +69,10 @@
 				<script type="text/html" id="list_template_lenovo">
 					{{each lenovos as lenovo}}
 					<div class="lenovo-box">
+						<div class="id" style="display:none">{{lenovo.id}}</div>
 						<img src="{{lenovo.img}}" class="img">
 						<div class="title">{{lenovo.title}}</div>
-						<div class="price"><span>价格：￥</span>{{lenovo.price}} <span>元</span></div>
+						<div class="price">{{lenovo.price}}</div>
 						<div class="add center-block"><i class="glyphicon glyphicon-shopping-cart"></i>加入购物车</div>
 					</div>
 					{{/each}}
