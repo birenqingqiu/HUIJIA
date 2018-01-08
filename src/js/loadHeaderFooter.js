@@ -20,7 +20,7 @@ define(["jquery", "cookie"], function($){
 		// 如果有用户登录成功，则显示欢迎信息
 		var user = $.cookie("loginUser");
 		if (user)
-			$(".login_reg").html("欢迎你：<a href='personal.html'>"+ user +"</a>")
+			$(".scroll").text("尊敬的用户"+ user+"： 汇贾商城提前祝您新年快乐，狗年大吉！旺旺......" );
 	});
 
 	// 将 footer.html 加载显示到 div.footer 中
