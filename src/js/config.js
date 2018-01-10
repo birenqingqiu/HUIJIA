@@ -19,9 +19,6 @@ require.config({
 		},
 		"bootstrap" : {
 			deps : ["jquery"]
-		},
-		"x_zoom" :{
-			deps : ["jquery"]
 		}
 	}
 });

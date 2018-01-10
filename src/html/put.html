@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>确认订单</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/put.css">
+</head>
+<body>
+	<div class="header"></div>
+	<div class="main">
+		<h3>确认订单</h3>
+		<div class="main_box">
+			
+		</div>
+		<div class="total">
+			<button class="tijiao">提交订单</button>
+		</div>
+		
+	</div>
+	<div class="footer"></div>
+	<script type="text/html" id="put_template">
+		{{each buys as buy}}
+			<p>您所订购的商品为：</p>
+			<div class="title">{{buy.title}}</div>
+			<img src="{{buy.img}}" class="img">
+			<p>价格为：￥</p>
+			<div class="price">{{buy.price}}</div>
+			<p>您的详细地址为：</p>
+			<input type="text" value="{{buy.addrs}}">
+			<p>共计：￥</p><span>{{buy.total}}</span>
+		{{/each}}
+	</script>
+	<script src="/lib/requirejs/require.js" data-main="/js/put"></script>
+</body>
+</html>

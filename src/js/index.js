@@ -113,7 +113,7 @@ require(["config"], function(){
 				});
 
 			});
-				$(".lenovo-box").delegate(".img", "click", function(event){
+			$(".lenovo-box").delegate(".img", "click", function(event){
 				var _box = $(this).parent();
 				var ID = _box.children(".id").text();
 				$.cookie("id", ID, {expires:7, path:"/"});

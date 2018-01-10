@@ -1,5 +1,5 @@
 require(["config"], function(){
-	require(["jquery","template","zoom","cookie","load"], function($,template){
+	require(["jquery","template","zoom","bootstrap","cookie","load"], function($,template){
 		$.cookie.json = true;
 		//加载对应商品的数据
 		var contrast = $.cookie("id");
@@ -16,31 +16,35 @@ require(["config"], function(){
 			var array =[];
 			array.push(cData.products[xb])
 			//获取即将要渲染的数据
-			// let sj = {pr : cData.products[xb]};
-			// console.log(sj);
-			// var html = template("mb_box", sj);
-			
 			var html = "";
 			$.each(array, function(index, element){
 				html = `<div class="box">
 					<div class="id" style="display:none">${element.id}</div>
 					<div class="title">${element.title}</div>
-					
-					<div class="price">${element.price}</div>
-					
-					<p>配送至:</p>
+					<img src="${element.img}" style="display:none" class="img"/>
+					<div class="jg_box">
+					<div class="jg1"><span>市场价:￥<del>9999<del></span></div>
+					<div class="jg"><span>汇贾价格:</span><span>￥</span><div class="price">${element.price}</div></div>
+					</div>
+					<div class="addr">
+						<p>配送至:</p>
 					 	<select id="province"></select>
 						<select id="city"></select>
-						<select id="district"></select>
+						<select id="district"></select><br/>
+						<span>详细地址：</span><input type="" placeholder="请输入详细地址" class="addrs"/>
+					</div>
+					<div class="amount"><span>数量：</span><span class="minus">-</span>
+					<input type="text" class="amount_num" value="1" style="width:40px; text-align: center;">
+					<span class="add">+</span></div>
 				</div>`
 			});
 			$(".mb_box").html(html);
 			var pic = "";
 			$.each(array, function(index, e){
-				pic = `<div id="imgwrapper"> 
+				pic = `<div id="imgwrapper" style="border:1px solid #bcbcbc;margin-top:2px;"> 
     					<img id="zoom_03" src="${e.img}" data-zoom-image="${e.big_img}"/> 
 					</div> 
-					<div id="pics"> 
+					<div id="pics" style="border:1px solid #bcbcbc"> 
     					<a href="http://www.sucaihuo.com/js" data-image="${e.img}" data-zoom-image="${e.big_img}"> 
         				<img  src="${e.s_img}" />
     					</a> 
@@ -132,64 +136,63 @@ require(["config"], function(){
 					loadDistrict();
 				});
 			});
-			// <div class="mb">
-			// 	<div class="id" style="display:none">{{product.id}}</div>
-			// 	<img src="{{product.img}}" class="img">
-			// 	<div class="title">{{product.title}}</div>
-			// 	<div class="price">{{product.price}}</div>
-			// </div>	
+			//加入购物车部分
+			// 查找 id 所表示的商品在 products 中位置
+			function exist(id, products) {
+				var idx = -1;
+				$.each(products, function(index, elemenet){
+					if (elemenet.id == id) {
+						idx = index;
+						return false;
+					}
+				});
+
+				return idx;
+			}
+			$(".buy_mb").delegate(".add", "click", function(event){
+				var _box = $(this).parent().parent();
+				// 将当前选购商品的信息保存到对象中
+				
+				var prod = {
+					id:_box.children(".mb_box").children(".box").children(".id").text(),
+					title:_box.children(".mb_box").children(".box").children(".title").text(),
+					price:Number(_box.children(".mb_box").children(".box").children(".jg_box").children(".jg").children(".price").text()),
+					amount:Number(_box.children(".mb_box").children(".box").children(".amount").children(".amount_num").val()),
+
+					img:_box.children(".mb_box").children(".box").children(".img").attr("src")
+				};
+				// 查找 cookie 中已有购物车结构
+				var _products = $.cookie("products") || [];
+				// 判断当前选购商品是否在数组中已有选购
+				var index = exist(prod.id, _products);
+				if (index === -1) {
+					// 将当前选购商品保存到数组中
+					_products.push(prod);					
+				} else {
+					// 将已选购商品的数量加上输入的值
+					_products[index].amount += Number(prod.amount);
+				}
+				// 将数组存回 cookie 中
+				$.cookie("products", _products, {expires:7, path:"/"});
+			});
+			$(".buy_mb").delegate(".at_once", "click", function(event){
+				var _box = $(this).parent().parent();
+				// 将当前选购商品的信息保存到对象中
+				console.log(_box);
+				var _prod = {
+					id:_box.children(".mb_box").children(".box").children(".id").text(),
+					title:_box.children(".mb_box").children(".box").children(".title").text(),
+					price:Number(_box.children(".mb_box").children(".box").children(".jg_box").children(".jg").children(".price").text()),
+					amount:Number(_box.children(".mb_box").children(".box").children(".amount").children(".amount_num").val()),
+					addrs:_box.children(".mb_box").children(".box").children(".addr").children(".addrs").val(),
+					img:_box.children(".mb_box").children(".box").children(".img").attr("src"),
+					total : Number(_box.children(".mb_box").children(".box").children(".jg_box").children(".jg").children(".price").text())*Number(_box.children(".mb_box").children(".box").children(".amount").children(".amount_num").val())
+				};
+				
+				// 将数组存回 cookie 中
+				$.cookie("buy", _prod, {expires:7, path:"/"});
+				location="/html/put.html";
+			});
 		});
-		
-		// //商品详情购物车cookie部分
-		// $.getJSON("/mock/detail.json", function(data){
-		// 	// 准备渲染数据
-		// 	var renderData = {products : data.res_body.data};
-		// 	// 渲染数据
-		// 	// var html = template("list_template", renderData);
-		// 	// $(".discounts").html(html);
-
-		// 	var renderData_lx = {lenovos : data.res_body.lenovo};
-		// 	// var html_lx = template("list_template_lenovo", renderData_lx);
-		// 	// $(".lenovo").html(html_lx);
-
-		// 	// 配置 cookie 插件的 json 数据自动转换
-		// 	$.cookie.json = true;
-		// 	// 查找 id 所表示的商品在 products 中位置
-		// 	function exist(id, products) {
-		// 		var idx = -1;
-		// 		$.each(products, function(index, elemenet){
-		// 			if (elemenet.id == id) {
-		// 				idx = index;
-		// 				return false;
-		// 			}
-		// 		});
-
-		// 		return idx;
-		// 	}
-		// 	$(".add_box").delegate(".detail_add", "click", function(event){
-		// 		var _box = $(this).parent();
-		// 		// 将当前选购商品的信息保存到对象中
-		// 		var prod = {
-		// 			id:_box.children(".id").text(),
-		// 			title:_box.children(".title").text(),
-		// 			price:_box.children(".price").text(),
-		// 			amount:1,
-		// 			img:_box.children(".img").attr("src")
-		// 		};
-		// 		// 查找 cookie 中已有购物车结构
-		// 		var _products = $.cookie("products") || [];
-		// 		// 判断当前选购商品是否在数组中已有选购
-		// 		var index = exist(prod.id, _products);
-		// 		if (index === -1) {
-		// 			// 将当前选购商品保存到数组中
-		// 			_products.push(prod);					
-		// 		} else {
-		// 			// 将已选购商品的数量自增
-		// 			_products[index].amount++;
-		// 		}
-		// 		// 将数组存回 cookie 中
-		// 		$.cookie("products", _products, {expires:7, path:"/"});
-		// 	});
-		// });
-	})
+	});
 });
