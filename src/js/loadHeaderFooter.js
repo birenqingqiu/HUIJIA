@@ -3,6 +3,12 @@ define(["jquery", "cookie"], function($){
 	// 将 header.html 加载显示，绑定交互效果
 	$.ajax("/html/include/header.html").done(function(data){
 		$(".header").html(data);
+		$(".shouye").click(function(){
+			location="/index.html";
+		});
+		$(".all").click(function(){
+			$(".phone").show();
+		});
 	}).done(function(){
 		// 绑定查找的键盘按键事件
 		$(".search .word").keyup(function(){

@@ -9,18 +9,20 @@
 <body>
 	<div class="header"></div>
 	<div class="main">
-		<h3>确认订单</h3>
 		<div class="main_box">
-			
+			<h3>确认订单</h3>
+			<div class="main_box">
+				
+			</div>
 		</div>
 		<div class="total">
-			<button class="tijiao">提交订单</button>
+			<button class="tijiao">确定</button>
 		</div>
-		
 	</div>
 	<div class="footer"></div>
 	<script type="text/html" id="put_template">
 		{{each buys as buy}}
+		<div class="buy_box">
 			<p>您所订购的商品为：</p>
 			<div class="title">{{buy.title}}</div>
 			<img src="{{buy.img}}" class="img">
@@ -29,6 +31,7 @@
 			<p>您的详细地址为：</p>
 			<input type="text" value="{{buy.addrs}}">
 			<p>共计：￥</p><span>{{buy.total}}</span>
+		</div>
 		{{/each}}
 	</script>
 	<script src="/lib/requirejs/require.js" data-main="/js/put"></script>

@@ -15,30 +15,9 @@ require(["config"], function(){
 		var _html = template("put_template", {buys : [_products]});
 	
 		$(".main_box").html(_html);
-
-		/************************************************************/
-		// 查找 id 所表示的商品在 buy 中位置
-		// function exist(id, buy) {
-		// 	var idx = -1;
-		// 	$.each(buy, function(index, elemenet){
-		// 		if (elemenet.id == id) {
-		// 			idx = index;
-		// 			return false;
-		// 		}
-		// 	});
-
-		// 	return idx;
-		// }
-
-		// /************************************************************/
-		//  计算合计 
-		// function calcTotal() {
-		// 	// 获取所有选中的商品行前的复选框
-		// 	var sum = 0;
-		// 	$(".ck_product:checked").each(function(index, element){
-		// 		sum += Number($(this).parents(".put_box").children(".sub").text())
-		// 	});
-		// 	$(".total .money").text(sum.toFixed(2));
-		// }
+		$(".tijiao").click(function(){
+			alert("购买成功");
+			location="/index.html";
+		});
 	});
 });
